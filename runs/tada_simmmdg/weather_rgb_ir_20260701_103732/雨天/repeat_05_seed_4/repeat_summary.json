@@ -1,0 +1,22 @@
+{
+  "target_domain": "雨天",
+  "repeat": 5,
+  "seed": 4,
+  "best_epoch_by_f1": 1,
+  "best_f1_value": 0.05376344086021506,
+  "best_epoch_metrics": {
+    "acc": 0.19230769230769232,
+    "precision": 0.032051282051282055,
+    "recall": 0.16666666666666666,
+    "f1": 0.05376344086021506,
+    "loss": 2.579520115485558
+  },
+  "best_acc": 0.19230769230769232,
+  "best_acc_epoch": 1,
+  "best_precision": 0.032051282051282055,
+  "best_precision_epoch": 1,
+  "best_recall": 0.16666666666666666,
+  "best_recall_epoch": 1,
+  "best_f1": 0.05376344086021506,
+  "best_f1_epoch": 1
+}

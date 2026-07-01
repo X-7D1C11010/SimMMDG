@@ -1,0 +1,300 @@
+{
+  "source_train": {
+    "data_root": "/home/lixiang/lx/Data",
+    "domain": "晴天",
+    "split": "train",
+    "layout": "modality_first",
+    "pairing": "cycle",
+    "rgb_dir_name": "可见光",
+    "ir_dir_name": "红外",
+    "num_samples": 992,
+    "num_classes_with_pairs": 14,
+    "classes": {
+      "1": {
+        "rgb_files": 120,
+        "ir_files": 120,
+        "paired_samples": 120,
+        "exact_pairs": 93,
+        "cycled_pairs": 27
+      },
+      "2": {
+        "rgb_files": 64,
+        "ir_files": 52,
+        "paired_samples": 64,
+        "exact_pairs": 38,
+        "cycled_pairs": 26
+      },
+      "3": {
+        "rgb_files": 80,
+        "ir_files": 52,
+        "paired_samples": 80,
+        "exact_pairs": 42,
+        "cycled_pairs": 38
+      },
+      "4": {
+        "rgb_files": 116,
+        "ir_files": 58,
+        "paired_samples": 116,
+        "exact_pairs": 56,
+        "cycled_pairs": 60
+      },
+      "5": {
+        "rgb_files": 68,
+        "ir_files": 53,
+        "paired_samples": 68,
+        "exact_pairs": 46,
+        "cycled_pairs": 22
+      },
+      "6": {
+        "rgb_files": 57,
+        "ir_files": 53,
+        "paired_samples": 57,
+        "exact_pairs": 45,
+        "cycled_pairs": 12
+      },
+      "7": {
+        "rgb_files": 83,
+        "ir_files": 83,
+        "paired_samples": 83,
+        "exact_pairs": 68,
+        "cycled_pairs": 15
+      },
+      "8": {
+        "rgb_files": 48,
+        "ir_files": 44,
+        "paired_samples": 48,
+        "exact_pairs": 35,
+        "cycled_pairs": 13
+      },
+      "9": {
+        "rgb_files": 128,
+        "ir_files": 45,
+        "paired_samples": 128,
+        "exact_pairs": 45,
+        "cycled_pairs": 83
+      },
+      "10": {
+        "rgb_files": 43,
+        "ir_files": 44,
+        "paired_samples": 44,
+        "exact_pairs": 36,
+        "cycled_pairs": 8
+      },
+      "11": {
+        "rgb_files": 69,
+        "ir_files": 47,
+        "paired_samples": 69,
+        "exact_pairs": 37,
+        "cycled_pairs": 32
+      },
+      "12": {
+        "rgb_files": 40,
+        "ir_files": 45,
+        "paired_samples": 45,
+        "exact_pairs": 31,
+        "cycled_pairs": 14
+      },
+      "13": {
+        "rgb_files": 40,
+        "ir_files": 40,
+        "paired_samples": 40,
+        "exact_pairs": 31,
+        "cycled_pairs": 9
+      },
+      "14": {
+        "rgb_files": 30,
+        "ir_files": 30,
+        "paired_samples": 30,
+        "exact_pairs": 22,
+        "cycled_pairs": 8
+      }
+    }
+  },
+  "source_val": {
+    "data_root": "/home/lixiang/lx/Data",
+    "domain": "晴天",
+    "split": "val",
+    "layout": "modality_first",
+    "pairing": "cycle",
+    "rgb_dir_name": "可见光",
+    "ir_dir_name": "红外",
+    "num_samples": 257,
+    "num_classes_with_pairs": 14,
+    "classes": {
+      "1": {
+        "rgb_files": 31,
+        "ir_files": 31,
+        "paired_samples": 31,
+        "exact_pairs": 4,
+        "cycled_pairs": 27
+      },
+      "2": {
+        "rgb_files": 17,
+        "ir_files": 14,
+        "paired_samples": 17,
+        "exact_pairs": 1,
+        "cycled_pairs": 16
+      },
+      "3": {
+        "rgb_files": 21,
+        "ir_files": 13,
+        "paired_samples": 21,
+        "exact_pairs": 2,
+        "cycled_pairs": 19
+      },
+      "4": {
+        "rgb_files": 30,
+        "ir_files": 15,
+        "paired_samples": 30,
+        "exact_pairs": 4,
+        "cycled_pairs": 26
+      },
+      "5": {
+        "rgb_files": 17,
+        "ir_files": 14,
+        "paired_samples": 17,
+        "exact_pairs": 5,
+        "cycled_pairs": 12
+      },
+      "6": {
+        "rgb_files": 15,
+        "ir_files": 14,
+        "paired_samples": 15,
+        "exact_pairs": 5,
+        "cycled_pairs": 10
+      },
+      "7": {
+        "rgb_files": 21,
+        "ir_files": 21,
+        "paired_samples": 21,
+        "exact_pairs": 6,
+        "cycled_pairs": 15
+      },
+      "8": {
+        "rgb_files": 13,
+        "ir_files": 12,
+        "paired_samples": 13,
+        "exact_pairs": 2,
+        "cycled_pairs": 11
+      },
+      "9": {
+        "rgb_files": 32,
+        "ir_files": 12,
+        "paired_samples": 32,
+        "exact_pairs": 6,
+        "cycled_pairs": 26
+      },
+      "10": {
+        "rgb_files": 11,
+        "ir_files": 12,
+        "paired_samples": 12,
+        "exact_pairs": 4,
+        "cycled_pairs": 8
+      },
+      "11": {
+        "rgb_files": 18,
+        "ir_files": 12,
+        "paired_samples": 18,
+        "exact_pairs": 1,
+        "cycled_pairs": 17
+      },
+      "12": {
+        "rgb_files": 11,
+        "ir_files": 12,
+        "paired_samples": 12,
+        "exact_pairs": 3,
+        "cycled_pairs": 9
+      },
+      "13": {
+        "rgb_files": 10,
+        "ir_files": 10,
+        "paired_samples": 10,
+        "exact_pairs": 1,
+        "cycled_pairs": 9
+      },
+      "14": {
+        "rgb_files": 8,
+        "ir_files": 8,
+        "paired_samples": 8,
+        "exact_pairs": 0,
+        "cycled_pairs": 8
+      }
+    }
+  },
+  "target_test": {
+    "data_root": "/home/lixiang/lx/Data",
+    "domain": "雾天",
+    "split": "val",
+    "layout": "class_first",
+    "pairing": "cycle",
+    "rgb_dir_name": "可见光",
+    "ir_dir_name": "红外",
+    "num_samples": 132,
+    "num_classes_with_pairs": 9,
+    "classes": {
+      "1": {
+        "rgb_files": 9,
+        "ir_files": 9,
+        "paired_samples": 9,
+        "exact_pairs": 2,
+        "cycled_pairs": 7
+      },
+      "2": {
+        "rgb_files": 28,
+        "ir_files": 28,
+        "paired_samples": 28,
+        "exact_pairs": 4,
+        "cycled_pairs": 24
+      },
+      "4": {
+        "rgb_files": 7,
+        "ir_files": 7,
+        "paired_samples": 7,
+        "exact_pairs": 4,
+        "cycled_pairs": 3
+      },
+      "5": {
+        "rgb_files": 13,
+        "ir_files": 13,
+        "paired_samples": 13,
+        "exact_pairs": 3,
+        "cycled_pairs": 10
+      },
+      "6": {
+        "rgb_files": 13,
+        "ir_files": 13,
+        "paired_samples": 13,
+        "exact_pairs": 0,
+        "cycled_pairs": 13
+      },
+      "8": {
+        "rgb_files": 3,
+        "ir_files": 3,
+        "paired_samples": 3,
+        "exact_pairs": 0,
+        "cycled_pairs": 3
+      },
+      "9": {
+        "rgb_files": 18,
+        "ir_files": 24,
+        "paired_samples": 24,
+        "exact_pairs": 3,
+        "cycled_pairs": 21
+      },
+      "10": {
+        "rgb_files": 5,
+        "ir_files": 5,
+        "paired_samples": 5,
+        "exact_pairs": 0,
+        "cycled_pairs": 5
+      },
+      "11": {
+        "rgb_files": 19,
+        "ir_files": 30,
+        "paired_samples": 30,
+        "exact_pairs": 1,
+        "cycled_pairs": 29
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
 
 # 忽略数据集和训练日志
 datasets/
-runs/
+
 output/
 
 # 忽略 Python 缓存

@@ -566,7 +566,7 @@ def parse_args():
     parser.add_argument(
         "--data_root",
         type=str,
-        default=None,
+        default="/home/lixiang/lx/Data",
         help="Root directory of the TADA dataset. It can also be set by TADA_DATA_ROOT.",
     )
     parser.add_argument("--source_domain", type=str, default="晴天")
@@ -580,8 +580,8 @@ def parse_args():
     parser.add_argument("--seeds", nargs="*", type=int, default=None)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--epochs", type=int, default=30)
-    parser.add_argument("--batch_size", type=int, default=16)
-    parser.add_argument("--num_workers", type=int, default=0)
+    parser.add_argument("--batch_size", type=int, default=32)
+    parser.add_argument("--num_workers", type=int, default=8)
     parser.add_argument("--device", type=str, default="")
 
     parser.add_argument("--num_classes", type=int, default=14)

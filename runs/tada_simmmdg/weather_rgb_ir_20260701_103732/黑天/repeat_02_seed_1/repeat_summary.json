@@ -1,0 +1,22 @@
+{
+  "target_domain": "黑天",
+  "repeat": 2,
+  "seed": 1,
+  "best_epoch_by_f1": 3,
+  "best_f1_value": 0.0678374655647383,
+  "best_epoch_metrics": {
+    "acc": 0.35,
+    "precision": 0.05914085914085914,
+    "recall": 0.09917355371900825,
+    "f1": 0.0678374655647383,
+    "loss": 4.363751103480657
+  },
+  "best_acc": 0.35,
+  "best_acc_epoch": 3,
+  "best_precision": 0.05914085914085914,
+  "best_precision_epoch": 3,
+  "best_recall": 0.125,
+  "best_recall_epoch": 1,
+  "best_f1": 0.0678374655647383,
+  "best_f1_epoch": 3
+}

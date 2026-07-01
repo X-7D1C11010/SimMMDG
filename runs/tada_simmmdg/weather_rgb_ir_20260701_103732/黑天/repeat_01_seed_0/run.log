@@ -1,0 +1,32 @@
+2026-07-01 10:37:32,623 | INFO | Start target=黑天 repeat=1 seed=0 train_samples=992 target_test_samples=120
+2026-07-01 10:37:38,943 | INFO | epoch=001 train_acc=0.1210 source_val_acc=0.1868 target_acc=0.0833 target_p=0.1335 target_r=0.1346 target_f1=0.0337 best_f1=0.0337@1
+2026-07-01 10:37:43,600 | INFO | epoch=002 train_acc=0.2137 source_val_acc=0.2802 target_acc=0.1750 target_p=0.1640 target_r=0.1563 target_f1=0.0796 best_f1=0.0796@2
+2026-07-01 10:37:47,947 | INFO | epoch=003 train_acc=0.2087 source_val_acc=0.2218 target_acc=0.3083 target_p=0.0756 target_r=0.1707 target_f1=0.1038 best_f1=0.1038@3
+2026-07-01 10:37:52,571 | INFO | epoch=004 train_acc=0.1149 source_val_acc=0.1401 target_acc=0.1167 target_p=0.0197 target_r=0.0538 target_f1=0.0289 best_f1=0.1038@3
+2026-07-01 10:37:57,012 | INFO | epoch=005 train_acc=0.1190 source_val_acc=0.1673 target_acc=0.1083 target_p=0.0195 target_r=0.0556 target_f1=0.0289 best_f1=0.1038@3
+2026-07-01 10:38:01,703 | INFO | epoch=006 train_acc=0.1139 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:06,180 | INFO | epoch=007 train_acc=0.1200 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:11,199 | INFO | epoch=008 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:15,715 | INFO | epoch=009 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:20,442 | INFO | epoch=010 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:24,893 | INFO | epoch=011 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:29,331 | INFO | epoch=012 train_acc=0.1200 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:33,732 | INFO | epoch=013 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:38,191 | INFO | epoch=014 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:42,430 | INFO | epoch=015 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:47,097 | INFO | epoch=016 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:51,555 | INFO | epoch=017 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:38:56,041 | INFO | epoch=018 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:00,468 | INFO | epoch=019 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:04,709 | INFO | epoch=020 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:09,142 | INFO | epoch=021 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:13,668 | INFO | epoch=022 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:18,533 | INFO | epoch=023 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:22,903 | INFO | epoch=024 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:27,194 | INFO | epoch=025 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:31,395 | INFO | epoch=026 train_acc=0.1200 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:35,781 | INFO | epoch=027 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:40,158 | INFO | epoch=028 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:44,830 | INFO | epoch=029 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:49,306 | INFO | epoch=030 train_acc=0.1210 source_val_acc=0.1206 target_acc=0.2167 target_p=0.0271 target_r=0.1250 target_f1=0.0445 best_f1=0.1038@3
+2026-07-01 10:39:49,307 | INFO | Finished target=黑天 repeat=1 summary={'target_domain': '黑天', 'repeat': 1, 'seed': 0, 'best_epoch_by_f1': 3, 'best_f1_value': 0.10376811594202899, 'best_epoch_metrics': {'acc': 0.30833333333333335, 'precision': 0.07555282555282555, 'recall': 0.17073170731707316, 'f1': 0.10376811594202899, 'loss': 4.215891853968302}, 'best_acc': 0.30833333333333335, 'best_acc_epoch': 3, 'best_precision': 0.16401515151515153, 'best_precision_epoch': 2, 'best_recall': 0.17073170731707316, 'best_recall_epoch': 3, 'best_f1': 0.10376811594202899, 'best_f1_epoch': 3}

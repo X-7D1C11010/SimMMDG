@@ -1,0 +1,22 @@
+{
+  "target_domain": "雾天",
+  "repeat": 5,
+  "seed": 4,
+  "best_epoch_by_f1": 3,
+  "best_f1_value": 0.04117696090689339,
+  "best_epoch_metrics": {
+    "acc": 0.10606060606060606,
+    "precision": 0.023088023088023088,
+    "recall": 0.1904761904761905,
+    "f1": 0.04117696090689339,
+    "loss": 23.024600195162225
+  },
+  "best_acc": 0.18181818181818182,
+  "best_acc_epoch": 1,
+  "best_precision": 0.027507538260226432,
+  "best_precision_epoch": 2,
+  "best_recall": 0.1904761904761905,
+  "best_recall_epoch": 3,
+  "best_f1": 0.04117696090689339,
+  "best_f1_epoch": 3
+}

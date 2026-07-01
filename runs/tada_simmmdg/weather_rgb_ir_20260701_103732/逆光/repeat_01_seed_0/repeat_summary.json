@@ -1,0 +1,22 @@
+{
+  "target_domain": "逆光",
+  "repeat": 1,
+  "seed": 0,
+  "best_epoch_by_f1": 2,
+  "best_f1_value": 0.14843137254901964,
+  "best_epoch_metrics": {
+    "acc": 0.2702702702702703,
+    "precision": 0.1130952380952381,
+    "recall": 0.24583333333333335,
+    "f1": 0.14843137254901964,
+    "loss": 2.3326489860947066
+  },
+  "best_acc": 0.2702702702702703,
+  "best_acc_epoch": 2,
+  "best_precision": 0.13857142857142857,
+  "best_precision_epoch": 3,
+  "best_recall": 0.24583333333333335,
+  "best_recall_epoch": 2,
+  "best_f1": 0.14843137254901964,
+  "best_f1_epoch": 2
+}
