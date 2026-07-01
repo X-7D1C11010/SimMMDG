@@ -1,6 +1,6 @@
 # TADA RGB-IR SimMMDG 实验说明
 
-本目录是针对 `D:\Code\TADA\Data` 数据集新增的图像版 SimMMDG 实验入口。原仓库的 HAC/EPIC 代码面向视频、光流和音频；当前 TADA 数据是可见光与红外图像，因此这里保留 SimMMDG 的核心训练思想，并将模态后端替换为 RGB-IR 双图像编码器。
+本目录是针对 TADA 数据集新增的图像版 SimMMDG 实验入口。原仓库的 HAC/EPIC 代码面向视频、光流和音频；当前 TADA 数据是可见光与红外图像，因此这里保留 SimMMDG 的核心训练思想，并将模态后端替换为 RGB-IR 双图像编码器。
 
 ## 数据结构适配
 
@@ -47,37 +47,47 @@
 
 ## 运行命令
 
+数据集路径不再写死。运行时可以用 `--data_root` 指定，也可以设置环境变量 `TADA_DATA_ROOT`。相对路径会按 `SimMMDG` 仓库根目录解析；输出目录默认保存在 `SimMMDG/runs/tada_simmmdg`。
+
 先做数据扫描，不训练：
 
-```powershell
-cd D:\Code\SimMMDG
-python .\TADA-rgb-ir\train_tada_simmmdg.py --dry_run
+```bash
+cd /path/to/SimMMDG
+python TADA-rgb-ir/train_tada_simmmdg.py --data_root /path/to/TADA/Data --dry_run
+```
+
+也可以用环境变量：
+
+```bash
+cd /path/to/SimMMDG
+export TADA_DATA_ROOT=/path/to/TADA/Data
+python TADA-rgb-ir/train_tada_simmmdg.py --dry_run
 ```
 
 运行完整 4 个目标域、每个 5 次重复实验：
 
-```powershell
-cd D:\Code\SimMMDG
-python .\TADA-rgb-ir\train_tada_simmmdg.py `
-  --data_root D:\Code\TADA\Data `
-  --source_domain 晴天 `
-  --target_domains 黑天 逆光 雾天 雨天 `
-  --repeats 5 `
-  --epochs 30 `
-  --batch_size 16 `
-  --backbone resnet18 `
-  --output_dir runs\tada_simmmdg
+```bash
+cd /path/to/SimMMDG
+python TADA-rgb-ir/train_tada_simmmdg.py \
+  --data_root /path/to/TADA/Data \
+  --source_domain 晴天 \
+  --target_domains 黑天 逆光 雾天 雨天 \
+  --repeats 5 \
+  --epochs 30 \
+  --batch_size 16 \
+  --backbone resnet18 \
+  --output_dir runs/tada_simmmdg
 ```
 
 如需显式指定 5 次随机种子：
 
-```powershell
-python .\TADA-rgb-ir\train_tada_simmmdg.py --seeds 0 1 2 3 4
+```bash
+python TADA-rgb-ir/train_tada_simmmdg.py --data_root /path/to/TADA/Data --seeds 0 1 2 3 4
 ```
 
 如果本机已有 ImageNet 预训练权重缓存，可加入：
 
-```powershell
+```bash
 --pretrained
 ```
 
@@ -86,7 +96,7 @@ python .\TADA-rgb-ir\train_tada_simmmdg.py --seeds 0 1 2 3 4
 每次运行会创建：
 
 ```text
-runs/tada_simmmdg/weather_rgb_ir_YYYYmmdd_HHMMSS/
+SimMMDG/runs/tada_simmmdg/weather_rgb_ir_YYYYmmdd_HHMMSS/
 ```
 
 主要文件：

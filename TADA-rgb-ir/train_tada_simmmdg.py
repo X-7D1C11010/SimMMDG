@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import logging
+import os
 import random
 import statistics
 from datetime import datetime
@@ -24,6 +25,16 @@ from dataset_tada_rgb_ir import (
     collect_domain_summaries,
 )
 from losses import SupConLoss
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def resolve_repo_path(path_value: str) -> Path:
+    path = Path(path_value).expanduser()
+    if path.is_absolute():
+        return path
+    return (REPO_ROOT / path).resolve()
 
 
 class Encoder(nn.Module):
@@ -552,7 +563,12 @@ def aggregate(rows: List[Dict], target_domains: Iterable[str]) -> List[Dict]:
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run SimMMDG-style RGB-IR experiments on TADA weather domains.")
-    parser.add_argument("--data_root", type=str, default=r"D:\Code\TADA\Data")
+    parser.add_argument(
+        "--data_root",
+        type=str,
+        default=None,
+        help="Root directory of the TADA dataset. It can also be set by TADA_DATA_ROOT.",
+    )
     parser.add_argument("--source_domain", type=str, default="晴天")
     parser.add_argument("--target_domains", nargs="+", default=["黑天", "逆光", "雾天", "雨天"])
     parser.add_argument("--train_split", type=str, default="train")
@@ -587,18 +603,31 @@ def parse_args():
     parser.add_argument("--temp", type=float, default=0.1)
     parser.add_argument("--best_metric", choices=["acc", "precision", "recall", "f1"], default="f1")
 
-    parser.add_argument("--output_dir", type=str, default="runs/tada_simmmdg")
+    parser.add_argument(
+        "--output_dir",
+        type=str,
+        default="runs/tada_simmmdg",
+        help="Directory for logs and results. Relative paths are resolved under the SimMMDG repo root.",
+    )
     parser.add_argument("--exp_name", type=str, default="")
     parser.add_argument("--save_best", action="store_true")
     parser.add_argument("--dry_run", action="store_true")
-    return parser.parse_args()
+    args = parser.parse_args()
+
+    if args.data_root is None:
+        args.data_root = os.environ.get("TADA_DATA_ROOT")
+    if not args.data_root:
+        parser.error("Please set --data_root or the TADA_DATA_ROOT environment variable.")
+
+    args.data_root = str(resolve_repo_path(args.data_root))
+    return args
 
 
 def main():
     args = parse_args()
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     exp_name = args.exp_name or "weather_rgb_ir_{}".format(timestamp)
-    exp_dir = Path(args.output_dir) / exp_name
+    exp_dir = resolve_repo_path(args.output_dir) / exp_name
     exp_dir.mkdir(parents=True, exist_ok=True)
     write_json(exp_dir / "config.json", vars(args))
 
