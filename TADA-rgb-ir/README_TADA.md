@@ -40,7 +40,7 @@
 - 源域验证：`晴天/val`
 - 目标测试集：目标天气的 `val`
 - 模型：可见光 ResNet + 红外 ResNet，融合后分类
-- SimMMDG 损失：分类损失、跨模态翻译损失、监督对比损失、共享/私有特征距离损失
+- SimMMDG 损失：分类损失、跨模态翻译损失、监督对比损失、共享/私有特征正交约束
 - 测试指标：ACC、macro Precision、macro Recall、macro F1
 
 默认是 source-only 训练，即只用 `晴天/train` 更新模型，并在目标天气 `val` 上测试。若你要做有标签目标域联合训练，可加 `--include_target_train`，脚本会把当前目标域的 `train` 也并入训练集。
@@ -90,6 +90,20 @@ python TADA-rgb-ir/train_tada_simmmdg.py --data_root /path/to/TADA/Data --seeds 
 ```bash
 --pretrained
 ```
+
+服务器离线环境如果没有缓存，`--pretrained` 可能触发下载失败；不加该参数时会从零训练。当前数据量较小，建议优先使用可用的 ImageNet 预训练权重。
+
+## 训练稳定性
+
+早期版本使用 `-MSE(shared, private)` 作为特征拆分距离损失。该形式无下界，模型会通过无限放大 shared/private 特征范数来降低总 loss，表现为训练 loss 迅速变成巨大负数，随后分类结果退化到固定类别。当前默认 `--split_loss orthogonal` 会先归一化 shared/private 特征，再最小化二者 cosine 相似度平方，目标有界且更稳定。
+
+如果需要复现实验问题，可显式指定：
+
+```bash
+--split_loss negative_mse
+```
+
+不建议在正式实验中使用该选项。
 
 ## 输出文件
 

@@ -177,22 +177,33 @@ def simmmdg_loss(model, outputs, labels, ce_loss, contrast_loss, args):
     contrast_features = torch.stack([rgb_proj, ir_proj], dim=1)
     con_loss = contrast_loss(contrast_features, labels)
 
-    dist_loss = -0.5 * (
-        F.mse_loss(outputs["rgb_shared"], outputs["rgb_private"])
-        + F.mse_loss(outputs["ir_shared"], outputs["ir_private"])
-    )
+    if args.split_loss == "negative_mse":
+        split_loss = -0.5 * (
+            F.mse_loss(outputs["rgb_shared"], outputs["rgb_private"])
+            + F.mse_loss(outputs["ir_shared"], outputs["ir_private"])
+        )
+    else:
+        rgb_shared = F.normalize(outputs["rgb_shared"], dim=1)
+        rgb_private = F.normalize(outputs["rgb_private"], dim=1)
+        ir_shared = F.normalize(outputs["ir_shared"], dim=1)
+        ir_private = F.normalize(outputs["ir_private"], dim=1)
+        split_loss = 0.5 * (
+            torch.sum(rgb_shared * rgb_private, dim=1).pow(2).mean()
+            + torch.sum(ir_shared * ir_private, dim=1).pow(2).mean()
+        )
 
     total = (
         cls_loss
         + args.alpha_trans * trans_loss
         + args.alpha_contrast * con_loss
-        + args.explore_loss_coeff * dist_loss
+        + args.explore_loss_coeff * split_loss
     )
     return total, {
+        "loss_total": float(total.detach().cpu()),
         "loss_cls": float(cls_loss.detach().cpu()),
         "loss_trans": float(trans_loss.detach().cpu()),
         "loss_contrast": float(con_loss.detach().cpu()),
-        "loss_distance": float(dist_loss.detach().cpu()),
+        "loss_split": float(split_loss.detach().cpu()),
     }
 
 
@@ -251,6 +262,7 @@ def train_one_epoch(model, loader, optimizer, ce_loss, contrast_loss, device, ar
     model.train()
     running_loss = 0.0
     total = 0
+    component_sums: Dict[str, float] = {}
     y_true: List[int] = []
     y_pred: List[int] = []
 
@@ -261,12 +273,16 @@ def train_one_epoch(model, loader, optimizer, ce_loss, contrast_loss, device, ar
 
         optimizer.zero_grad()
         outputs = model(rgb, ir)
-        loss, _ = simmmdg_loss(model, outputs, labels, ce_loss, contrast_loss, args)
+        loss, components = simmmdg_loss(model, outputs, labels, ce_loss, contrast_loss, args)
         loss.backward()
+        if args.grad_clip_norm and args.grad_clip_norm > 0:
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.grad_clip_norm)
         optimizer.step()
 
         batch_size = labels.size(0)
         running_loss += float(loss.detach().cpu()) * batch_size
+        for key, value in components.items():
+            component_sums[key] = component_sums.get(key, 0.0) + value * batch_size
         total += batch_size
         preds = outputs["logits"].argmax(dim=1).detach().cpu().tolist()
         y_pred.extend(preds)
@@ -274,6 +290,8 @@ def train_one_epoch(model, loader, optimizer, ce_loss, contrast_loss, device, ar
 
     metrics = classification_metrics(y_true, y_pred, args.num_classes)
     metrics["loss"] = running_loss / max(1, total)
+    for key, value in component_sums.items():
+        metrics[key] = value / max(1, total)
     return metrics
 
 
@@ -348,6 +366,10 @@ def metric_row(target_domain, repeat_idx, seed, epoch, split, metrics):
         "precision": metrics["precision"],
         "recall": metrics["recall"],
         "f1": metrics["f1"],
+        "loss_cls": metrics.get("loss_cls", ""),
+        "loss_trans": metrics.get("loss_trans", ""),
+        "loss_contrast": metrics.get("loss_contrast", ""),
+        "loss_split": metrics.get("loss_split", ""),
     }
 
 
@@ -456,7 +478,22 @@ def run_repeat(args, target_domain: str, repeat_idx: int, seed: int, exp_dir: Pa
     with epoch_csv.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["target_domain", "repeat", "seed", "epoch", "split", "loss", "acc", "precision", "recall", "f1"],
+            fieldnames=[
+                "target_domain",
+                "repeat",
+                "seed",
+                "epoch",
+                "split",
+                "loss",
+                "acc",
+                "precision",
+                "recall",
+                "f1",
+                "loss_cls",
+                "loss_trans",
+                "loss_contrast",
+                "loss_split",
+            ],
         )
         writer.writeheader()
 
@@ -600,8 +637,15 @@ def parse_args():
     parser.add_argument("--alpha_trans", type=float, default=0.1)
     parser.add_argument("--alpha_contrast", type=float, default=3.0)
     parser.add_argument("--explore_loss_coeff", type=float, default=0.7)
+    parser.add_argument(
+        "--split_loss",
+        choices=["orthogonal", "negative_mse"],
+        default="orthogonal",
+        help="Feature split regularizer. orthogonal is bounded and stable; negative_mse is the original unbounded form.",
+    )
     parser.add_argument("--temp", type=float, default=0.1)
     parser.add_argument("--best_metric", choices=["acc", "precision", "recall", "f1"], default="f1")
+    parser.add_argument("--grad_clip_norm", type=float, default=5.0)
 
     parser.add_argument(
         "--output_dir",
